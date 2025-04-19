@@ -18,6 +18,11 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'heading': ['Crimson Pro', 'serif'],
+				'body': ['Source Sans Pro', 'sans-serif'],
+				'mono': ['Roboto Mono', 'monospace']
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -51,6 +56,16 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
+				},
+				bible: {
+					navy: '#1A365D',
+					gray: '#64748B',
+					gold: '#C4B454',
+					offwhite: '#F8FAFC',
+					text: '#1A202C',
+					'dark-bg': '#1A202C',
+					'dark-text': '#E2E8F0',
+					'dark-gold': '#D4C374',
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',

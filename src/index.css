@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Roboto+Mono&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    /* Original shadcn variables */
+    --background: 210 40% 98%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -13,52 +16,47 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    /* Bible app specific colors - light mode */
+    --primary: 215 55% 23%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 218 22% 47%;
+    --secondary-foreground: 210 40% 98%;
+
+    --accent: 43 47% 55%;
+    --accent-foreground: 215 55% 23%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 215 55% 23%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 210 40% 98%;
+    --sidebar-foreground: 222.2 84% 4.9%;
+    --sidebar-primary: 215 55% 23%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 210 40% 96.1%;
+    --sidebar-accent-foreground: 215 55% 23%;
+    --sidebar-border: 214.3 31.8% 91.4%;
+    --sidebar-ring: 215 55% 23%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    /* Bible app specific colors - dark mode */
+    --background: 222 26% 14%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 222 26% 14%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 222 26% 14%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 210 40% 98%;
@@ -67,11 +65,11 @@
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
 
+    --accent: 45 32% 64%;
+    --accent-foreground: 222 26% 14%;
+
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
@@ -79,14 +77,15 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    --sidebar-background: 222 26% 14%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 45 32% 64%;
+    --sidebar-primary-foreground: 222 26% 14%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 45 32% 64%;
   }
 }
 
@@ -97,5 +96,41 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Crimson Pro', serif;
+  }
+}
+
+@layer components {
+  .verse-number {
+    @apply font-mono text-sm text-accent mr-1.5 align-top;
+    font-family: 'Roboto Mono', monospace;
+  }
+  
+  .verse-text {
+    @apply leading-relaxed;
+  }
+  
+  .scripture-container {
+    @apply p-6 bg-card rounded-lg shadow-sm;
+  }
+  
+  .commentary-container {
+    @apply p-6 bg-card rounded-lg shadow-sm border-l-4 border-accent;
+  }
+  
+  .bible-nav-button {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent/10 h-10 px-4 py-2;
+  }
+  
+  .reference-tag {
+    @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium bg-accent/10 text-accent-foreground transition-colors hover:bg-accent/20;
+  }
+  
+  .greek-word {
+    @apply font-heading font-semibold text-accent/90 dark:text-accent/90;
   }
 }
